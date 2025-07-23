@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express'
 import { EventServices } from './event.service'
 
@@ -32,6 +33,7 @@ const getAllEvents = async (req: Request, res: Response) => {
       success: true,
       data: result,
     })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     res.status(500).json({
       message: err.message || 'Something went wrong',
