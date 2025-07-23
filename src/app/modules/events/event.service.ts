@@ -11,6 +11,13 @@ const createEventIntoDB = async (event: Event) => {
 
 // get all events from database
 
+const getAllEventsFromDB = async () => {
+  const result = await EventModel.find()
+
+  return result
+}
+
 export const EventServices = {
   createEventIntoDB,
+  getAllEventsFromDB,
 }
