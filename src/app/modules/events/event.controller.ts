@@ -28,11 +28,7 @@ const createEvent = async (req: Request, res: Response) => {
 const getAllEvents = async (req: Request, res: Response) => {
   try {
     const result = await EventServices.getAllEventsFromDB()
-    res.status(200).json({
-      message: 'Events are retrieved successfully',
-      success: true,
-      data: result,
-    })
+    res.json(result)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     res.status(500).json({
@@ -44,7 +40,12 @@ const getAllEvents = async (req: Request, res: Response) => {
   }
 }
 
+const updateEvent = async () => {}
+const deleteEvent = async () => {}
+
 export const EventControllers = {
   createEvent,
   getAllEvents,
+  updateEvent,
+  deleteEvent,
 }

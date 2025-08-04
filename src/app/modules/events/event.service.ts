@@ -17,7 +17,12 @@ const getAllEventsFromDB = async () => {
   return result
 }
 
+const updateEventIntoDB = async () => {}
+const deleteEventIntoDB = async () => {}
+
 export const EventServices = {
   createEventIntoDB,
   getAllEventsFromDB,
+  updateEventIntoDB,
+  deleteEventIntoDB,
 }
