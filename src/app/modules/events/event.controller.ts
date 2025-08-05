@@ -41,7 +41,20 @@ const getAllEvents = async (req: Request, res: Response) => {
 }
 
 const updateEvent = async () => {}
-const deleteEvent = async () => {}
+
+// delete event
+
+const deleteEvent = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const deleted = await EventServices.deleteEventFromDB(id)
+    if (!deleted) return res.status(404).json({ error: 'Event not found' })
+
+    res.status(200).json({ message: 'Event deleted' })
+  } catch (err) {
+    res.status(500).json({ error: 'Delete failed' })
+  }
+}
 
 export const EventControllers = {
   createEvent,

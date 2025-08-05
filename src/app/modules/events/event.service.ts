@@ -18,11 +18,16 @@ const getAllEventsFromDB = async () => {
 }
 
 const updateEventIntoDB = async () => {}
-const deleteEventIntoDB = async () => {}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const deleteEventFromDB = async ({ id }: any) => {
+  const result = await EventModel.findByIdAndDelete(id)
+  return result
+}
 
 export const EventServices = {
   createEventIntoDB,
   getAllEventsFromDB,
   updateEventIntoDB,
-  deleteEventIntoDB,
+  deleteEventFromDB,
 }
