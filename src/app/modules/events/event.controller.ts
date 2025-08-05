@@ -40,7 +40,26 @@ const getAllEvents = async (req: Request, res: Response) => {
   }
 }
 
-const updateEvent = async () => {}
+// update data
+
+const updateEvent = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const result = await EventServices.updateEventIntoDB(id, req.body)
+    res.status(200).json({
+      message: 'Event updated successfully',
+      success: true,
+      data: result,
+    })
+  } catch (err: any) {
+    res.status(500).json({
+      message: err.message || 'Something went wrong',
+      status: false,
+      error: err,
+      stack: err.stack,
+    })
+  }
+}
 
 // delete event
 
@@ -51,8 +70,11 @@ const deleteEvent = async (req: Request, res: Response) => {
     if (!deleted) return res.status(404).json({ error: 'Event not found' })
 
     res.status(200).json({ message: 'Event deleted' })
-  } catch (err) {
-    res.status(500).json({ error: 'Delete failed' })
+  } catch (err: any) {
+    res.status(500).json({
+      message: err.message || 'Something went wrong',
+      status: false,
+    })
   }
 }
 

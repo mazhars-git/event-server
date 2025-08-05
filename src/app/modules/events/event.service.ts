@@ -17,7 +17,10 @@ const getAllEventsFromDB = async () => {
   return result
 }
 
-const updateEventIntoDB = async () => {}
+const updateEventIntoDB = async (id, data) => {
+  const result = await EventModel.findByIdAndUpdate(id, data, { new: true })
+  return result
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const deleteEventFromDB = async ({ id }: any) => {
