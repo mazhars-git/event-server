@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.post('/', EventControllers.createEvent)
 router.get('/', EventControllers.getAllEvents)
-router.delete('/:id', EventControllers.getAllEvents)
-router.put('/:id', EventControllers.getAllEvents)
+router.delete('/:id', EventControllers.deleteEvent)
+router.put('/:id', EventControllers.updateEvent)
 
 export const EventRoutes = router

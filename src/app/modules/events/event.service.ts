@@ -1,3 +1,4 @@
+import { UpdateQuery } from 'mongoose'
 import { Event } from './event.interface'
 import { EventModel } from './event.model'
 
@@ -17,7 +18,10 @@ const getAllEventsFromDB = async () => {
   return result
 }
 
-const updateEventIntoDB = async (id, data) => {
+const updateEventIntoDB = async (
+  id: unknown,
+  data: UpdateQuery<Event> | undefined,
+) => {
   const result = await EventModel.findByIdAndUpdate(id, data, { new: true })
   return result
 }
